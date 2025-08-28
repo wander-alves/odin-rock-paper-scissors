@@ -1,3 +1,7 @@
+const buttons = document.querySelectorAll('.controls button');
+const humanScoreDisplay = document.getElementById('human-score');
+const computerScoreDisplay = document.getElementById('computer-score');
+
 const choices = ["rock", "paper", "scissor"];
 let humanScore = 0;
 let computerScore = 0;
@@ -7,12 +11,12 @@ function getComputerChoice(){
   return choices[randomIndex];
 }
 
-function getHumanChoice(){
-  const choice = prompt(`[Human: ${humanScore} x Computer: ${computerScore}] Please, select Rock, Paper or Scissor: `);
+function getHumanChoice(choice){
   if(!choices.find((item)=> item.toLowerCase() === choice.toLowerCase())){
     alert('Invalid option');
     getHumanChoice();
   }
+  
   return choice;
 }
 
@@ -60,19 +64,23 @@ function playRound(humanChoice, computerChoice){
 
 
 
-function playGame(){
-  const humanChoice = getHumanChoice();
+function playGame(choice){
+  const humanChoice = getHumanChoice(choice);
   const computerChoice = getComputerChoice();
   
   playRound(humanChoice, computerChoice);
+  humanScoreDisplay.innerText = humanScore;
+  computerScoreDisplay.innerText = computerScore;
   
   if(humanScore === 5){
     alert("You win!!!")
   }else if(computerScore === 5){
     alert("You lose")
-  }else{
-    playGame();
   }
 }
 
-document.getElementById("start").addEventListener("click", playGame)
+buttons.forEach((button)=> {
+  button.addEventListener('click', (e)=> {
+    playGame(e.target.innerText)
+  })
+})

@@ -7,7 +7,7 @@
 
 .container {
   min-height: 100vh;
-  background-color: #02157A;
+  background-color: #091038;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -44,6 +44,7 @@
   background-color: #0a44b0;
   cursor: pointer;
   transition: filter 0.3s ease;
+  box-shadow: 4px 4px 2px 2px rgba(0, 0, 0);
 }
 
 .container .controls button:hover {
@@ -51,8 +52,8 @@
 }
 
 .container .controls button:active {
-  box-shadow: inset 0 0 12px 2px rgba(0, 0, 0);
-  text-shadow: 4px 2px rgba(0, 0, 0, 0.4);
+  box-shadow: 0px 0px 0px 0px rgba(0, 0, 0);
+  transform: translateX(4px) translateY(4px);
 }
 
 .container h2 {
@@ -60,4 +61,19 @@
   text-align: center;
   color: #EFEFEF;
   font-size: 24px;
+}
+
+table.score {
+  width: 420px;
+  margin-top: 32px;
+  color: #EFEFEF;
+}
+
+table.score th {
+  text-align: left;
+}
+
+table.score td {
+  margin-top: 16px;
+  font-size: 20px;
 }
